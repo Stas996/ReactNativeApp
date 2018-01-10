@@ -1,4 +1,4 @@
-#Instruction for running application
+## Instruction for running application
 
 * Install the extension in VS Code:
 	1. Press Ctrl + Shift + X (Cmd + Shift + X on macOS), wait a moment while the list of available extensions is populated
@@ -16,14 +16,13 @@
 	3. For IOS - npm run ios;
     4. For Android - npm run android;
 
-#Commands
-  * npm start
-  	Starts the development server so you can open your app in the Expo app on your phone.
+## Commands
+  1. npm start - Starts the development server so you can open your app in the Expo app on your phone.
 
-  * npm run ios - (Mac only, requires Xcode) 
+  2. npm run ios - (Mac only, requires Xcode) 
   	Starts the development server and loads your app in an iOS simulator.
 
-  * npm run android - (Requires Android build tools)
+  3. npm run android - (Requires Android build tools)
     Starts the development server and loads your app on a connected Android
     device or emulator.
 
