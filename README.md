@@ -5,7 +5,7 @@
 	* Type react-native and install React Native Tools
 	* For more guidance view VS Code Extension Gallery
 2. If you haven't already, install React Native:
-	* Run npm install -g react-native-cli to install React Native CLI
+	* Run `npm install -g react-native-cli` to install React Native CLI
 3. Install Expo app on your phone device:
 	* For IOS - [download](https://itunes.apple.com/app/apple-store/id982107779?ct=www&mt=8);
 	* For Android - [download](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www);
