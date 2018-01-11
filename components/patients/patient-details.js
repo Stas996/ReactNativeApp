@@ -5,7 +5,7 @@ import { List, ListItem, Header } from 'react-native-elements'
 import { Patient } from '../shared/models/patient';
 import { patientService } from '../shared/services/patient.service';
 
-export default class PatientsList extends React.Component {
+export default class PatientDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

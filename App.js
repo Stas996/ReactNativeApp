@@ -1,19 +1,26 @@
 import React from 'react';
 import Login from './components/auth/login';
 import PatientsList from './components/patients/patients-list';
+import PatientsDetails from './components/patients/patient-details';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAuthenticated: false
+      currentUser: null 
     };
   }
 
   render() {
-    if (!this.state.isAuthenticated) {
+    if (!this.state.currentUser) {
       return (
         <Login onLogin={this._login}/>
+      );
+    }
+
+    if (this.state.currentUser.patientId || this.state.currentUser.patientRelativeId) {
+      return (
+        <PatientsDetails />
       );
     }
 
@@ -22,9 +29,9 @@ export default class App extends React.Component {
     );
   }
 
-  _login = () => {
+  _login = (currentUser) => {
     this.setState({
-      isAuthenticated: true,
+      currentUser: currentUser,
     });
   }
 }

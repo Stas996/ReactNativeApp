@@ -1,4 +1,4 @@
-import { authService } from './authService';
+import { authService } from './auth.service';
 
 class BaseApiService {
     get(url, options) {

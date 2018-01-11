@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
 import { Card } from 'react-native-elements';
-import { authService } from '../../services/authService';
+import { authService } from '../shared/services/auth.service';
 import "@expo/vector-icons";
 
 export default class Login extends React.Component {
@@ -22,8 +22,8 @@ export default class Login extends React.Component {
     const credentials = Object.assign({}, this.state);
     authService.login(credentials)
     .then(result => {
-      if(result.access_token){
-        this.props.onLogin();
+      if (result) {
+        this.props.onLogin(result);
         return;
       }
 

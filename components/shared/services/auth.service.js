@@ -1,7 +1,10 @@
 import { Environment } from '../config/environment';
+import { OAuthToken } from '../models/oauth-token';
+import { UserProfile } from '../models/user-profile';
 
 class AuthService {
-    token = '';
+    token = null;
+    endUser = null;
 
     login = (credentials) => {
         return fetch(Environment.oauthServerUrl + '/connect/token', {
@@ -13,9 +16,36 @@ class AuthService {
             body: createAuthParams(credentials)
         })
         .then(response => response.json())
+        .then(json => { 
+            const token = new OAuthToken(
+                json.access_token,
+                json.refresh_token,
+                json.expires_in);
+
+            this.token = token;
+            return token;
+        })
+        .then(token => {
+            return token.valid
+            ? this.getUserProfile(token)
+            : null;
+        });
+    }
+
+    getUserProfile = (token) => {
+        const headers = { Authorization : `Bearer ${token}` };
+
+        return fetch(Environment.oauthServerUrl + '/api/users/current', {
+            method: "GET",
+            headers: {
+                'Authorization' : `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
         .then(json => {
-            this.token = json.access_token;
-            return json;
+            const profile = new UserProfile().parseJson(json);
+            this.profile = profile;
+            return profile;
         });
     }
 }
